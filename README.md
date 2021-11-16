@@ -1,8 +1,7 @@
 # FTP_Project_Assistant
 
 ## Decription
-Assistant for machine learning related teacher assistant
-Easily get all accuracy information of test.tsv or test.csv files from the FTP server of the project
+For machine learning related teacher assistant to easily get all accuracy information of students' test.tsv
 
 ## Run Example
 ```
