@@ -1,12 +1,12 @@
 # FTP_Project_Assistant
 
 ## Decription
-Assistant for teacher assistant
+Assistant for machine learning related teacher assistant
 Easily get all accuracy information of test.tsv or test.csv files from the FTP server of the project
 
 ## Run Example
 ```
-python test_main.py --remote pj-1 
+python test_main.py --remote machine_learning_project
                     --host ***.**.***.***
                     --username ojipadeson
                     --password *******
