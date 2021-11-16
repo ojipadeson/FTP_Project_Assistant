@@ -19,6 +19,7 @@ def open_xsv(file: str,
 
 
 def accuracy_test(standard_file: str,
+                  local_dir_path: str,
                   stu_strict_format=False,
                   auto_align='cut tail',
                   index=None,
@@ -27,15 +28,15 @@ def accuracy_test(standard_file: str,
                   ignore=None):
 
     if ignore is None:
-        ignore = ['./.idea', '__pycache__']
-    ignore = ['./' + dir_name for dir_name in ignore]
+        ignore = ['.idea', '__pycache__', '.git']
+    ignore = [local_dir_path + '/' + dir_name for dir_name in ignore]
     if file_formats is None:
         file_formats = ['.tsv', '.csv']
     test_tsv = open_xsv(standard_file, index=index, header=header)
     
     stu_index = []
     stu_acc = []
-    for root, dirs, files in os.walk('./'):
+    for root, dirs, files in os.walk(local_dir_path + '/'):
         info_text = ''
         if not dirs and not root.startswith(tuple(ignore)):
             files_list = files.copy()
@@ -66,12 +67,14 @@ def accuracy_test(standard_file: str,
                         correct += 1
     
             if stu_strict_format:
-                if root[2:].startswith(tuple([str(i) for i in list(range(10))])):
-                    print('{:20s} : {:.4f}    '.format(root[2:], correct / test_tsv.shape[0]), info_text)
+                if root[len(local_dir_path) + 1:].startswith(tuple([str(i) for i in list(range(10))])):
+                    print('{0:{1}>20}'.format(root[len(local_dir_path) + 1:], chr(12288)), end='')
+                    print(':      {:.4f}    '.format(correct / test_tsv.shape[0]), info_text)
             else:
-                print('{:20s} : {:.4f}    '.format(root[2:], correct / test_tsv.shape[0]), info_text)
-            if root[2:].startswith(tuple([str(i) for i in list(range(10))])):
-                stu_index.append(root[2:])
+                print('{0:{1}>20}'.format(root[len(local_dir_path) + 1:], chr(12288)), end='')
+                print(':      {:.4f}    '.format(correct / test_tsv.shape[0]), info_text)
+            if root[len(local_dir_path) + 1:].startswith(tuple([str(i) for i in list(range(10))])):
+                stu_index.append(root[len(local_dir_path) + 1:])
                 stu_acc.append(correct / test_tsv.shape[0])
 
     if len(stu_index) and len(stu_acc):

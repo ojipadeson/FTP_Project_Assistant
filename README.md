@@ -5,7 +5,8 @@ For machine learning related teacher assistant to easily get all accuracy inform
 
 ## Run Example
 ```
-python test_main.py --remote machine_learning_project
+python test_main.py --remote **machine_learning_project**
+                    --local **local_dir_path**
                     --host ***.**.***.***
                     --username ojipadeson
                     --password *******

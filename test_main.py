@@ -38,4 +38,6 @@ if __name__ == "__main__":
     download_file(ftp, args.remote, args.local, args.target, args.ignore)
     ftp.quit()
 
-    accuracy_test(args.standard, index=args.index, header=args.header)
+    print("\n================ Create LeaderBoard ================\n")
+
+    accuracy_test(args.standard, args.local, index=args.index, header=args.header)
