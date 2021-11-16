@@ -4,7 +4,10 @@ import time
 from ftplib import FTP
 
 
-def ftp_connect(host, username, password):
+def ftp_connect(host: str,
+                username: str,
+                password: str):
+
     ftp_server = FTP()
     ftp_server.encoding = "ISO-8859-1"
     timeout = 30
@@ -14,7 +17,13 @@ def ftp_connect(host, username, password):
     return ftp_server
 
 
-def find_tsv_in_dir(ftp_server, local_dir_path, dir_path, previous_path, target_format, ignore_dirs):
+def find_tsv_in_dir(ftp_server: ftplib.FTP,
+                    local_dir_path: str,
+                    dir_path: str,
+                    previous_path: str,
+                    target_format: list,
+                    ignore_dirs: list):
+
     if dir_path in ignore_dirs:
         return False
     try:
@@ -50,7 +59,9 @@ def find_tsv_in_dir(ftp_server, local_dir_path, dir_path, previous_path, target_
     return False
 
 
-def get_time_stamp(ftp_server, file):
+def get_time_stamp(ftp_server: ftplib.FTP,
+                   file: str):
+
     L = list(ftp_server.sendcmd('MDTM ' + file))
     dir_t = L[4] + L[5] + L[6] + L[7] + '-' + L[8] + L[9] + '-' + L[10] + L[11] + ' ' + L[12] + L[13] + ':' + L[14] + L[
         15] + ':' + L[16] + L[17]
@@ -74,7 +85,12 @@ def get_time_stamp(ftp_server, file):
     return
 
 
-def download_file(ftp_server, remotepath, localpath, target_format, ignore_dirs):
+def download_file(ftp_server: ftplib.FTP,
+                  remotepath: str,
+                  localpath: str,
+                  target_format: list,
+                  ignore_dirs: list):
+
     ftp_server.cwd(remotepath)
     dirs_list = ftp_server.nlst()
     hand_in_count = 0
