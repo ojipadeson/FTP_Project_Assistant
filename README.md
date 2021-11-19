@@ -26,8 +26,8 @@ python test_main.py --remote **machine_learning_project**
 For example, if ```Report.pdf``` and ```Prediction.csv``` are needed,
 you have to type ```.csv,.pdf```.
 
-* DON'T TYPE ```''``` to generate you input as a string
-* USE ```,``` to split you file format, NO ```SPACE```
+* DON'T TYPE ```''``` to generate your input as a string
+* USE ```,``` to split your file format, NO ```SPACE```
 
 ---
 
@@ -85,4 +85,4 @@ FTP Server
 │
 └─...
 ```
-The directory tree should be like above on the FTP server.
+On the FTP server, the directory tree should be like above.
