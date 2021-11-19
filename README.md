@@ -24,7 +24,10 @@ python test_main.py --remote **machine_learning_project**
 **```target```  -- the target file format.**
 
 For example, if ```Report.pdf``` and ```Prediction.csv``` are needed,
-you have to type ```.csv,.pdf```.
+you have to run ```--target .csv``` for the first time, 
+and then run ```--target .pdf``` for a second time.
+
+<span style="font-family:Papyrus; font-size:1em;">The *Assistant* only grab the **FIRST** suitable file for every student.</span>
 
 * DON'T TYPE ```''``` to generate your input as a string
 * USE ```,``` to split your file format, NO ```SPACE```
